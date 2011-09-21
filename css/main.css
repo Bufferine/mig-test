@@ -98,6 +98,10 @@ a.selected {
 	margin-left:72px;
 }
 
+	.content .item.full {
+		width:700px;
+	}
+
 	#lower.content .item {
 		width:200px;
 	}
