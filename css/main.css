@@ -21,10 +21,24 @@ body {
 
 #header {
 	border-top:3px solid #1e1e1e;
+	border-bottom:2px solid #c7d4e7;
 	height:90px;
+	width:100%;
 }
+	#header {
+		position:fixed;
+		top:0;
+		z-index:9999;
+	}
+
 	#header .nav {
 		float:right;
+		margin-right:40px;
+	}
+
+	#header .nav.sub {
+		float:right;
+		clear:right;
 		margin-right:40px;
 	}
 
@@ -42,12 +56,15 @@ body {
 	padding-bottom:20px;
 }
 
+	#upper {
+		margin-top:90px;
+	}
+
 #lower.content {
 	min-height:100px;
 	height:auto !important;
 	height:100px;
-
-	padding:10px 0 20px 0;
+	padding:25px 0 20px 0;
 }
 
 
@@ -105,6 +122,19 @@ a.selected {
 .nav {
 	margin-top:35px;
 }
+
+	.nav.sub {
+		margin-top:16px;
+		font-size:0.8em;
+	}
+		.nav.sub .selected {
+			color:#272727;
+			background:#c7d4e7;
+
+			padding-top:9px;
+			padding-bottom:9px;
+			border-radius:5px 5px 0px 0px;
+		}
 
 	.nav li {
 		display:inline;
