@@ -8,10 +8,13 @@
 
 	<link rel=stylesheet href="./css/reset.css">
 	<link rel=stylesheet href="./css/main.css">
+	<link rel=stylesheet href="./css/prettify.css">
 
 	<script src="./js/jquery-1.6.4.min.js"></script>
+	<script src="./js/prettify.js"></script>
+	<script src="./js/lang-scala.js"></script>
 </head>
-<body>
+<body onload="prettyPrint()">
 	<div id="header">
 		<h1 id="logo"><span>SwitchToScala</span></h1>
 		<ul class="nav">
@@ -35,37 +38,38 @@
 <p>The beauty of Scala is you don't have to use functional programming all the time. You can choose to just use it in situations where it's advantageous. You will find that as you get more familiar with Scala you'll use more functional programming techniques as the code tends to be clearer and shorter than the equivalent non-functional code.</p>
 <p>For instance Quicksort in Java:</p>
 
+<pre class="prettyprint lang-java">
 public void quicksort(int array[]) {
-quicksort(array, 0, array.length - 1);              
+	quicksort(array, 0, array.length - 1);              
 }
 
 public void quicksort(int array[], int start, int end){
-        int i = start;                          
-        int k = end;                            
+    int i = start;                          
+    int k = end;                            
 
-        if (end - start >= 1){
-                int pivot = array[start];       
-                while (k > i){
-                        while (array[i] <= pivot && i <= end && k > i) i++;                                    
-                        while (array[k] > pivot && k >= start && k >= i) k--;                                        
-                        if (k > i) swap(array, i, k);                      
-                }
-                swap(array, start, k);                        
-                quickSort(array, start, k - 1); 
-                quickSort(array, k + 1, end);   
-        }else{
-                return;                     
-        }
+    if (end - start >= 1) {
+            int pivot = array[start];       
+            while (k > i) {
+                while (array[i] <= pivot && i <= end && k > i) i++;                                    
+                while (array[k] > pivot && k >= start && k >= i) k--;                                        
+                if (k > i) swap(array, i, k);                      
+            }
+            swap(array, start, k);                        
+            quickSort(array, start, k - 1); 
+            quickSort(array, k + 1, end);   
+    } else {
+            return;                     
+    }
 }
 
 public void swap(int array[], int index1, int index2) {
-int temp = array[index1];           
-array[index1] = array[index2];      
-array[index2] = temp;               
+	int temp = array[index1];           
+	array[index1] = array[index2];      
+	array[index2] = temp;               
 }
-
+</pre>
 <p>and now in Scala:</p>
-
+<pre class="prettyprint lang-java">
     def quicksort(a:Array[Int]): Array[Int] =
         if (a.length < 2) a
 
@@ -73,13 +77,14 @@ array[index2] = temp;
             val pivot = a(a.length / 2)
             sort (a filter (pivot > _)) ++ (a filter (pivot == _)) ++ sort (a filter(pivot < _))
         }
-
+</pre>
 <p>The Scala version is shorter, more readable, and much closer to how you'd describe the process in words, vs. the Java which is much more about the mechanics of doing it.</p>
 
 <h2>Syntax</h2>
 <p>Scala is much, much more terse than Java. At first glance, a Java developer can be a bit bewildered, as they're used to having so much laid out for them. When you start writing Scala you'll probably want to stick to what you know and keep doing that (with the few, minor changes such as the order you declare things changed) - and Scala is perfectly happy for you to do that. Within a matter of days you'll find that you get used to not having to do all that extra typing, and actually feel weighed down by it when you switch back to Java code.</p>
 <p>So here is the same quick sort example written in Scala but using Java like syntax that Java Developer learning Scala might write.
 
+<pre class="prettyprint lang-scala">
 def quickSort(array:Array[Int]):Unit ={
 	quickSort(array, 0, array.length - 1);
 }
@@ -109,7 +114,7 @@ def swap(array:Array[Int], index1:Int, index2:Int):Unit = {
 	array(index1) = array(index2);
 	array(index2) = temp;
 }
-
+</pre>
 <h2>Examples and tutorials</h2>
 <p>Java tutorials, textbooks, and forums are 10 a penny. Scala has fewer resources, but they are of a very high quality, the community is strong and enthusiastic, and unlike in Java you're likely to be able to get answers to any tricky questions directly from those implementing the language itself.</p>
 <p>Stack Overflow is very active <a href="http://stackoverflow.com/tags/scala/info">Stack Overflow's Scala Tutorial</a></p>

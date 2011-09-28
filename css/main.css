@@ -84,7 +84,7 @@ body {
 			color:#8d949d;
 		}
 
-p, .content li, .content a {
+p, .content li {
 	font-size:0.8em;
 }
 
@@ -97,17 +97,11 @@ p {
 	margin-top:14px;
 }
 
-a {
+.content a {
+	color:#642020;
 	text-decoration:none;
-	color:#1e1e1e;
-	font-size:0.9em;
-	padding:3px 7px;
-}
-
-a.selected {
-	color:#fff;
-	border-radius:5px;
-	background:#642020;
+	background:#D7E0EE;
+	padding:0 3px;
 }
 
 .content ul {
@@ -122,6 +116,18 @@ a.selected {
 .nav {
 	margin-top:35px;
 }
+	.nav a {
+		text-decoration:none;
+		color:#1e1e1e;
+		font-size:0.9em;
+		padding:3px 7px;
+	}
+
+	.nav a.selected {
+		color:#fff;
+		border-radius:5px;
+		background:#642020;
+	}
 
 	.nav.sub {
 		margin-top:16px;

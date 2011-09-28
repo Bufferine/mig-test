@@ -1,0 +1,26 @@
+pre.prettyprint {
+  margin-left: 5px; padding-left: 18px; border-left: 3px solid #642020;
+  font-family: Arial, Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace !important;
+  font-size:0.8em;
+  margin-top:12px;
+  background:#D7E0EE;
+  padding-top:8px;
+  padding-bottom:8px;
+}
+
+pre.prettyprint.linenumstrigger { margin-left: 0px; padding-left: 0px; border-left: 0px; }
+pre.prettyprint ol li { margin-left: 18px; padding-left: 18px; border-left: 3px solid #642020; }
+pre ol li.highlighttrigger { background-color: #DAD7FF; }
+
+
+.str { color: #080; }
+.kwd { color: #008; font-weight: bold; }
+.com { color: #800; }
+.typ { color: #606; font-weight: bold; }
+.lit { color: #066; }
+.pun { color: #000; }
+.pln { color: #000; }
+.tag { color: #008; }
+.atn { color: #606; }
+.atv { color: #080; }
+.dec { color: #606; }
