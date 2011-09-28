@@ -55,8 +55,8 @@ public void quicksort(int array[], int start, int end){
             if (k > i) swap(array, i, k);                      
         }
         swap(array, start, k);                        
-        quickSort(array, start, k - 1); 
-        quickSort(array, k + 1, end);   
+        quicksort(array, start, k - 1); 
+        quicksort(array, k + 1, end);   
     } else {
         return;                     
     }
