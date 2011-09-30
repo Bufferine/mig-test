@@ -172,6 +172,11 @@ p {
 	border-radius:8px;
 }
 
+	#slides a {
+		background:none;
+		padding:0;
+	}
+
 	#slides ul {
 		margin:0 !important;
 	}
