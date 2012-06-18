@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name="content-type" content="text/html; charset=iso-8859-1">
+
+	<link rel=stylesheet href="./css/reset.css">
+	<link rel=stylesheet href="./css/main.css">
+	<link rel=stylesheet href="./css/prettify.css">
+
+	<script src="./js/jquery-1.6.4.min.js"></script>
+	<script src="./js/prettify.js"></script>
+	<script src="./js/lang-scala.js"></script>
+</head>
+<body onload="prettyPrint()">
+	<div id="header">
+		<h1 id="logo"><span>SwitchToScala</span></h1>
+		<ul class="nav">
+			<li><a href="./index.html">Home</a></li>
+			<li><a class="selected" href="./why_adopt_scala.html">Why Adopt Scala?</a></li>
+			<li><a href="./how_we_work.html">How We Work</a></li>
+			<li><a href="./about_us.html">About Us</a></li>
+			<li><a href="./contact.html">Contact</a></li>
+		</ul>
+
+		<ul class="nav sub">
+		    <li><a href="./why_adopt_scala.html">Why Adopt Scala?</a></li>
+			<li><a class="selected" href="./examples.html">Examples</a></li>
+			<li><a href="./enterprise_adoption.html">Enterprise Adoption</a></li>
+		</ul>
+	</div>
+
+	<div id="upper" class="content">
+		<div class="item full">
+<h2>Functional Programming why?</h2>
+<p>The beauty of Scala is you don't have to use functional programming all the time. You can choose to just use it in situations where it's advantageous. You will find that as you get more familiar with Scala you'll use more functional programming techniques as the code tends to be clearer and shorter than the equivalent non-functional code.</p>
+<p>For instance Quicksort in Java:</p>
+
+<pre class="prettyprint lang-java">
+public void quicksort(int array[]) {
+    quicksort(array, 0, array.length - 1);              
+}
+
+public void quicksort(int array[], int start, int end){
+    int i = start;                          
+    int k = end;                            
+
+    if (end - start >= 1) {
+        int pivot = array[start];       
+        while (k > i) {
+            while (array[i] <= pivot && i <= end && k > i) i++;                                    
+            while (array[k] > pivot && k >= start && k >= i) k--;                                        
+            if (k > i) swap(array, i, k);                      
+        }
+        swap(array, start, k);                        
+        quicksort(array, start, k - 1); 
+        quicksort(array, k + 1, end);   
+    } else {
+        return;                     
+    }
+}
+
+public void swap(int array[], int index1, int index2) {
+    int temp = array[index1];           
+    array[index1] = array[index2];      
+    array[index2] = temp;               
+}
+</pre>
+<p>and now in Scala:</p>
+<pre class="prettyprint lang-java">
+    def quicksort(a:Array[Int]): Array[Int] =
+        if (a.length < 2) a
+
+        else {
+            val pivot = a(a.length / 2)
+            sort (a filter (pivot > _)) ++ (a filter (pivot == _)) ++ sort (a filter(pivot < _))
+        }
+</pre>
+<p>The Scala version is shorter, more readable, and much closer to how you'd describe the process in words, vs. the Java which is much more about the mechanics of doing it.</p>
+
+<h2>Syntax</h2>
+<p>Scala is much, much more terse than Java. At first glance, a Java developer can be a bit bewildered, as they're used to having so much laid out for them. When you start writing Scala you'll probably want to stick to what you know and keep doing that (with the few, minor changes such as the order you declare things changed) - and Scala is perfectly happy for you to do that. Within a matter of days you'll find that you get used to not having to do all that extra typing, and actually feel weighed down by it when you switch back to Java code.</p>
+<p>So here is the same quick sort example written in Scala but using Java like syntax that Java Developer learning Scala might write.
+
+<pre class="prettyprint lang-scala">
+def quickSort(array:Array[Int]):Unit ={
+	quickSort(array, 0, array.length - 1);
+}
+
+
+def quickSort(array:Array[Int], start:Int, end:Int):Unit = {
+    var i:Int = start;
+    var k:Int = end;
+
+    if (end - start >= 1) {
+        val pivot = array(start);
+        while (k > i) {
+            while (array(i) <= pivot && i <= end && k > i) i += 1;
+            while (array(k) > pivot && k >= start && k >= i) k -= 1;
+            if (k > i) swap(array, i, k);
+        }
+        swap(array, start, k);
+        quickSort(array, start, k - 1);
+        quickSort(array, k + 1, end);
+    } else {
+        return;
+    }
+}
+
+def swap(array:Array[Int], index1:Int, index2:Int):Unit = {
+	var temp:Int = array(index1);
+	array(index1) = array(index2);
+	array(index2) = temp;
+}
+</pre>
+<h2>Examples and tutorials</h2>
+<p>Java tutorials, textbooks, and forums are 10 a penny. Scala has fewer resources, but they are of a very high quality, the community is strong and enthusiastic, and unlike in Java you're likely to be able to get answers to any tricky questions directly from those implementing the language itself.</p>
+<p>Stack Overflow is very active <a href="http://stackoverflow.com/tags/scala/info">Stack Overflow's Scala Tutorial</a></p>
+<p>Twitter has opened sourced Scala training material <a href="http://twitter.github.com/scala_school/">Twitter's Scala School</a></p>
+
+<h2>IDE/tool support</h2>
+<p>IntelliJ and Eclipse both have widely used Scala plugins, as do more unusual environments such as VIM and Emacs. You can keep using many of your supporting Java tools - Java Application servers, dependency management all work with Scala, plus you have new options such as the REPL for interactive Scala sessions (which can run in the context of your project) and external compilation daemons which accelerate experimentation, development and learning in ways that are all but impossible with Java.</p>
+<p><a href="http://blog.jetbrains.com/scala/">Stack Overflow's Scala Tutorial</a></p>
+<p><a href="http://www.scala-ide.org/">Stack Overflow's Scala Tutorial</a></p>
+<p><a href="http://aemon.com/file_dump/ensime_manual.html#tth_sEc1.1">Scala Interaction Mode for Emacs and VIM</a></p>
+
+		</div>
+	</div>
+
+        <div id="lower" class="content">
+                <div class="item">
+                        <h1> Why Scala?</h1>
+                        <p>"Why should my developers learn and use a new technology? We already have a language that works.."</p>
+                        <p>We were Java engineers, but we adopted Scala to deliver applications more quickly and at lower cost. Scala code on average is about 3 times shorter than the equivalent Java, without losing performance or scalability.</p>
+                
+                </div>
+                <div class="item">
+                        <h1> How to Adopt Scala</h1>
+                        <p>An experienced Java Developer can begin writing Java-like Scala within one day. </p>
+<p>If you develop in Java then you will feel immediately at home with Scala. You can use the same libraries and IDE, the way you package jars and wars is the same and your runtime environment is also the same.</p>
+                </div>
+                <div class="item">
+			<h1> Read Google's Review of Scala </h1>
+			<p>Google compares the performance of Java, Scala, Go, C++ in this <a href="https://days2011.scala-lang.org/sites/days2011/files/ws3-1-Hundt.pdf">free whitepaper</a></p>
+			<p>Scala beats Java on runtime, and it had a smaller code size and a smaller memory footprint. "Scala['s] concise notation and powerful language features allowed for the best optimization of code complexity,".</p>
+		</div>
+	</div>
+~                
+	<div id="footer">
+		<ul class="nav">
+			<li><a href="./index.html">Home</a></li>
+			<li><a href="./why_adopt_scala.html">Why Adopt Scala?</a></li>
+			<li><a href="./how_we_work.html">How We Work</a></li>
+			<li><a href="./about_us.html">About Us</a></li>
+			<li><a href="./contact.html">Contact</a></li>
+		</ul>
+	</div>
+</body>
+</html>
